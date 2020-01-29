@@ -34,7 +34,7 @@ function maxSubarrySum(arr,num){
     var max = -Infinity;
     for (let i = 0; i< arr.length - num + 1; i++){
         temp = 0;
-        for(let j = 0; j < num. j++){
+        for(let j = 0; j < num. j++;){
             temp += arr[i + j];
         }
         if(temp > max) {
@@ -43,3 +43,27 @@ function maxSubarrySum(arr,num){
     }
     return max;
 }
+function search(arr, val){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === val){
+            return i;
+        }
+    }
+    return -1;
+}
+
+function power(base,expo){
+    if (expo === 0) return 1;
+    return base =  base * power(base,expo-1);
+}
+
+console.log(power(2,4));
+
+function factorial(num) {
+    if ( num === 0) return 1;
+
+    return num = num * factorial(num-1);
+}
+console.log(factorial(4));
+
+
