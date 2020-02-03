@@ -66,20 +66,37 @@ function factorial(num) {
 }
 console.log(factorial(4));
 
-
-function productOfArray(arr) {
-    if(arr.length === 0) {
-        return 1;
-    }
-    return arr[0] * productOfArray(arr.slice(1));
+function reverse(str) {
+    if (str.length <= 1) return str;
+    
+    
+    return reverse(str.slice(1)); + str[0];
 }
 
-function recursiveRange(x){
-    if (x === 0 ) return 0;
-    return x + recursiveRange(x-1);
- }
+console.log(reverse("banana"));
 
- function fib(n){
-    if (n <= 2) return 1;
-    return fib(n-1) + fib(n-2);
+function isPalindrome(str) {
+    if(str.length === 1) return true;
+    if(str.length === 2) return str[0] === str[1];
+    if(str[0] === str(-1)) return isPalindrome(str.slice(1,-1));
+    return false;
+ 
 }
+
+function someRecursive(array, callback) {
+    if (array.length === 0) return false;
+    if (callback(array[0])) return true;
+    return someRecursive(array.slice(1),callback);
+}
+
+function flatten(oldArr){
+    var newArr = []
+        for(var i = 0; i < oldArr.length; i++){
+          if(Array.isArray(oldArr[i])){
+                newArr = newArr.concat(flatten(oldArr[i]))
+          } else {
+                newArr.push(oldArr[i])
+          }
+    } 
+    return newArr;
+  }
