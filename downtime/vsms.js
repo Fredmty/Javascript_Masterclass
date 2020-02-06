@@ -153,3 +153,25 @@ function binarySearch(arr, elem) {
     }
     return -1;
 }
+
+function strSearch(str,sub){
+    let longer = str;
+
+    let shorter = sub;
+
+    let match = 0;
+
+    for(let i = 0; i < longer.length; i++){
+        for(let j = 0; j< shorter.length; j++){
+            if(longer[i] !== shorter[i+j]){
+                break;
+            } else {
+                if(j === shorter.length - 1) 
+                match++;
+            }
+
+            }
+        }
+        return match;
+    }
+
