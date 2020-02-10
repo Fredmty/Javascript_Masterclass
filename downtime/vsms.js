@@ -188,4 +188,35 @@ for( let i = 0; i < len; i++) {
 }
 while (swapped);
 return true;
-};
+}
+
+function selectionSort(arr){
+    for(var i = 0; i < arr.length; i++){
+        var lowest = i; //seleciona o menor número
+        for(var j = i+1; j < arr.length; j++){
+            if(arr[j] < arr[lowest]){ // caso esse número do array seja menor
+                lowest = j; // o menor vira esse número
+            }
+        }
+        if(i !== lowest){ //Caso a posição inicial seja menor, ocorre a troca. Faz o 'inverso' do bubble
+            
+            var temp = arr[i]; // troca do bubblesort
+            arr[i] = arr[lowest];
+            arr[lowest] = temp;
+        }
+    }
+    return arr;
+}
+
+function insertionSort(arr){
+	var currentVal; // seleciona o valor atual
+    for(var i = 1; i < arr.length; i++){ // itera a partir do segundo valor
+        currentVal = arr[i]; // valor atual vai de 2 em diante do array
+        for(var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            arr[j+1] = arr[j] // 3 recebe 2, 4 recebe 3, assim por diante. 
+        }
+        arr[j+1] = currentVal; // o próximo valor é o atual, repete a iretação para verificar se está tudo no lugar
+    }
+    return arr;
+}
+
