@@ -220,3 +220,36 @@ function insertionSort(arr){
     return arr;
 }
 
+function mergeSort(arr){
+    if(arr.length <= 1) return arr; // caso seja menor ou igual a 1, retorna o array 
+    let mid = Math.floor(arr.length/2); // cria o tamanho do meio para availiar o merge
+    let left = mergeSort(arr.slice(0,mid)); // para a parte da esquerda, vai de 0 até a metade
+    let right = mergeSort(arr.slice(mid)); // para a parte da direita, vai do meio até o final
+    return merge(left, right); //recursivamente  faz a função de merge até condiçao de parada 
+}
+
+function merge(arr1,arr2){
+    let newarr = []; // array vazio
+    let i = 0; // "menor" número de um array
+    let j = 0; // "menor" número de outro array
+    while (i < arr1.length && j < arr2.length) { // enquanto há dados nos arrays
+    if(arr2[j] > arr1[i]){ // se o número do array B é maior que o de A
+        newarr.push(arr1[i]); // coloca o número de A no novo array
+        i++; // passa para o próximo elemento de A 
+    } else { // caso contrário
+        newarr.push(arr2[j]); // coloca o número de B no novo array
+        j++; // passa para o próximo elemento de B
+    }
+}
+    while(i < arr1.length) { //caso só haja dados em A
+        newarr.push(arr1[i]) //insere todos os dados no novo array
+        i++; // próximo elemento
+    }
+    while(j < arr2.length) { //caso haja só dados em B
+        newarr.push(arr2[j]) //insere todos os dados no novo array
+        j++; //próximo elemento
+    }
+    return newarr; //retorna o array final; 
+}
+
+
