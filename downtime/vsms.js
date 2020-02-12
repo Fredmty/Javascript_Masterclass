@@ -283,3 +283,33 @@ function pivot(arr, start=0, end=arr.length+1){
       }
      return arr;
 } 
+
+function getDigit(num, place) { //pega o digito especifico no array
+     return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+}
+
+function digitCount(num) { //não otimizado p/ números negativos.
+    return (num / 10) + 1;
+}
+
+function mostDigits(nums) { // conta qual número tem maior número de digitos para a iteração do radix
+    let maxDigits = 0;
+    for (let i = 0; i < nums.length; i++) {
+      maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+    }
+    return maxDigits;
+  }
+
+  function radixSort(nums){
+    let numiteracao = mostDigits(num); //numero de repetições do K
+    for(let k = 0; k < numiteracao; k++){
+        let buckets = Array.from({length: 10}, () => []); //cria 10 arrays vazios (0 - 9)
+        for(let i = 0; i< nums.length; i++){
+            let digit = getDigit(nums[i],k); //verifica qual o dígito na posição K do número
+            buckets[digit].push(nums[i]); // insere no bucket especifico daquela iteração
+        }
+        nums = [].concat(...buckets); //insere no array a posição de cada uma dos dados
+    }
+return nums; // retorna o array final já ordernado. 
+
+  }
