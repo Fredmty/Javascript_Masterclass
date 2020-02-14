@@ -46,12 +46,84 @@ class SinglyLinkedList{
     shift(){
         if(!this.head) return undefined;
         var current = this.head;
-        var keeper = current;
-        current = this.head.next;
+        this.head = current.next;
         this.length--;
 
-        return keeper;
+        return current;
     }
+    unshift(val){
+        let node = new Node(val);
+        if(!this.head) {
+            node = this.head && this.tail;
+        } else {
+            node.next = this.head;
+        }
+        this.head = node;
+        this.length++;
+
+        return this;
+    }
+    get(index){
+        if(index < 0 || index >= list.length) return null;
+        let counter = 0;
+        let current = this.head;
+        while(counter !== index){
+                current = current.next;
+                counter++;
+            }
+        return current
+    }
+    set(val, index){
+        var found = this.get(index);
+        if(found){
+            found.val = val;
+            return true;
+        }
+        return false;
+    }
+    insert(){
+        if (index < 0 || index > list.length) return false;
+        if( index === list.length) {
+            this.push(val);
+        }
+        if (index === 0) {
+            this.unshift(val);
+        } else {
+        let nodo = new Node(val);
+        let prev = this.get(index-1);
+        var temp = prev.next;
+        prev.next = nodo;
+        nodo.next = temp;
+        this.length++;
+        return true;
+    }
+    }
+    remove(){
+    if(index < 0 || index > list.length) return undefined;
+    if(index === list.length -1) this.pop();
+    if(index === 0) this.shift();
+    let prev = this.get(index-1);
+    let remo = prev.next;
+    prev.next = remo.next;
+    this.length--;
+    return remo;
+    }
+    reverse() {
+        var node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let prev;
+        let next;
+        while(list){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+
+    }
+    
 }
 
 
